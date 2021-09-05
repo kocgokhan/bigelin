@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bigelin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Bigelin</string>
+    <string name="title_category">Kategori</string>
+    <string name="title_campaign">Kampanya</string>
+    <string name="title_profile">Hesabım</string>
 </resources>

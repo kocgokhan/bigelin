@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_graph"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.bigelin.Activity.Couple.Fragment.MainFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_main" />
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.bigelin.Activity.Couple.Fragment.CategoryFragment"
+        android:label="@string/title_category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/navigation_campaign"
+        android:name="com.bigelin.Activity.Couple.Fragment.CampaingFragment"
+        android:label="@string/title_campaign"
+        tools:layout="@layout/fragment_campaing" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.bigelin.Activity.Couple.Fragment.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

@@ -1,6 +1,19 @@
 plugins {
     id 'com.android.application'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 }
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains' , module:'annotations'
+    compile.exclude group: 'com.intellij', module:'annotations'
+    compile.exclude group: 'org.intellij', module:'annotations'
+
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -8,12 +21,17 @@ android {
 
     defaultConfig {
         applicationId "com.bigelin"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        /*manifestPlaceholders = [
+                onesignal_app_id               : '4c92fa00-3f60-4e4f-b19a-bfd26ba1a66e',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]*/
     }
 
     buildTypes {
@@ -26,14 +44,56 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
-
+ext {
+    recyclerViewVersion = '1.0.0'
+}
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.github.zzz40500:AndroidSweetSheet:1.1.0'
+    implementation 'com.github.MdFarhanRaja:SearchableSpinner:2.0'
+
+    implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
+    implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.5'
+
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.1'
+    implementation 'com.google.firebase:firebase-analytics:18.0.2'
+
+    implementation 'com.google.firebase:firebase-core:10.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
+    implementation 'com.firebaseui:firebase-ui:1.0.1'
+
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
+    implementation 'com.android.volley:volley:1.1.1'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation "com.google.code.gson:gson:2.8.5"
 }

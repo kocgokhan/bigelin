@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "858507176170",
+    "project_id": "bigelin",
+    "storage_bucket": "bigelin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858507176170:android:17d211afb32a40b7158f93",
+        "android_client_info": {
+          "package_name": "com.bigelin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858507176170-4i1qqioom0rfs0lnp1ldu6i91kvrd49e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bigelin",
+            "certificate_hash": "670dc06c2d1183a10e83155cb7c5f1d1cba2c7f7"
+          }
+        },
+        {
+          "client_id": "858507176170-00pocd5b7fjrurgt58hje3gbctgoo9u0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPDEDcCJeqrrdc7aPeZeeFuQeGlFxZxC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858507176170-00pocd5b7fjrurgt58hje3gbctgoo9u0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
