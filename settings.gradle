@@ -1,0 +1,2 @@
+rootProject.name = "Bigelin"
+include ':app'
