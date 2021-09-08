@@ -29,9 +29,7 @@ public class MyApplication extends Application {
     public static MyApplication get() {
         return _instance;
     }
-    public static synchronized MyApplication getInstance() {
-        return _instance;
-    }
+
 
     @Override
     public void onCreate() {
@@ -54,7 +52,6 @@ public class MyApplication extends Application {
         _requestQueue = Volley.newRequestQueue(this);
 
     }
-
     public RequestQueue getRequestQueue() {
         return _requestQueue;
     }

@@ -7,6 +7,6 @@ package com.bigelin.Util;
 
 public class StaticFields {
 
-    public static final String BASE_URL = "https://www.bigelin.krakersoft.com/api/";
+    public static final String BASE_URL = "https://spotify.krakersoft.com/";
 
 }

@@ -6,4 +6,25 @@
     <string name="title_category">Kategori</string>
     <string name="title_campaign">Kampanya</string>
     <string name="title_profile">Hesabım</string>
+
+    <string name="action_settings">This is the Toolbar</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+    <string name="log_in">"LOG IN"</string>
+    <string name="sign_up">"SIGN UP"</string>
+    <string name="email">"Email Adresiniz"</string>
+    <string name="password">"Password"</string>
+    <string name="or_log_in_with">"Or Log In with"</string>
+    <string name="dont_have_account">"Dont Have Account? "</string>
+    <string name="sign_up_colorful">"Dont Have Account? "<![CDATA[<u><font color=#0000FF>SIGN UP</font></u>]]></string>
+
 </resources>
