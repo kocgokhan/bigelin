@@ -19,18 +19,6 @@
         app:menu="@menu/bottom_nav_menu" />
 
 
-    <RelativeLayout
-        android:id="@+id/sheetRL"
-        android:layout_width="391dp"
-        android:layout_height="593dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/navHostFragment"
-        app:layout_constraintVertical_bias="1.0">
-
-    </RelativeLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
@@ -43,6 +31,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/new_graph"/>
+
+    <RelativeLayout
+        android:id="@+id/sheetRL"
+        android:layout_width="391dp"
+        android:layout_height="593dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/navHostFragment"
+        app:layout_constraintVertical_bias="1.0">
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

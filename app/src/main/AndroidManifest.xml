@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bigelin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.Couple.CoupleMainActivity"></activity>
+        <activity android:name=".Activity.Couple.Activties.CoupleCategorySearchActivity"></activity>
+        <activity android:name=".Activity.Couple.CoupleMainActivity" />
         <activity android:name=".Activity.Login.GuestLoginActivity" />
         <activity android:name=".Activity.Login.CoupleLoginActivity" />
         <activity android:name=".Activity.Login.LoginActivity" />

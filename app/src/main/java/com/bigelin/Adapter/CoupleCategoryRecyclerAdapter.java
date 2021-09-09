@@ -25,7 +25,7 @@ public class CoupleCategoryRecyclerAdapter extends RecyclerView.Adapter<CoupleCa
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // infalte the item Layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_recy, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.vitrin_recyc, parent, false);
         // set the view's size, margins, paddings and layout parameters
         MyViewHolder vh = new MyViewHolder(v); // pass the view to View Holder
         return vh;
