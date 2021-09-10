@@ -27,4 +27,20 @@
     <string name="dont_have_account">"Dont Have Account? "</string>
     <string name="sign_up_colorful">"Dont Have Account? "<![CDATA[<u><font color=#0000FF>SIGN UP</font></u>]]></string>
 
+
+    <string name="inspect">İncele</string>
+    <string name="get_offer">Teklif Al</string>
+    <string name="filter_header">Detaylı Filtreleme</string>
+    <string name="free">Ücretsiz</string>
+    <string name="wedding_asistant">Düğün Asistanı</string>
+    <string name="welcome">Hoş geldin</string>
+    <string name="welcome_desc">bigelin.net ile düğününü planlayabilir, gelinliğini seçebilir ve aklına gelmeyen tüm detayları fark edebilirsin.</string>
+    <string name="company_title">Firma Adı</string>
+    <string name="city_title">Şehir Adı</string>
+    <string name="city_search">Şehir Seç</string>
+    <string name="district_search">İlçe Seç</string>
+    <string name="search_company">Firma Arayın</string>
+    <string name="company_desc">Firma Detayı</string>
+
+
 </resources>

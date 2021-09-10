@@ -1,4 +1,6 @@
 package com.bigelin.Adapter;
+
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +14,12 @@ import com.bigelin.R;
 
 import java.util.ArrayList;
 
-public class LoginRecyclerAdapter extends RecyclerView.Adapter<LoginRecyclerAdapter.MyViewHolder> {
+public class CoupleCampaingRecyclerAdapter extends RecyclerView.Adapter<CoupleCampaingRecyclerAdapter.MyViewHolder> {
 
     ArrayList<Integer> personImages;
     Context context;
 
-    public LoginRecyclerAdapter(Context context, ArrayList<Integer> personImages) {
+    public CoupleCampaingRecyclerAdapter(Context context, ArrayList<Integer> personImages) {
         this.context = context;
         this.personImages = personImages;
     }
@@ -25,7 +27,7 @@ public class LoginRecyclerAdapter extends RecyclerView.Adapter<LoginRecyclerAdap
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // infalte the item Layout
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.login_recy, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.campaing_recyc, parent, false);
         // set the view's size, margins, paddings and layout parameters
         MyViewHolder vh = new MyViewHolder(v); // pass the view to View Holder
         return vh;
@@ -60,7 +62,7 @@ public class LoginRecyclerAdapter extends RecyclerView.Adapter<LoginRecyclerAdap
             super(itemView);
 
             // get the reference of item view's
-            image = (ImageView) itemView.findViewById(R.id.product_image);
+            image = (ImageView) itemView.findViewById(R.id.company_image);
 
         }
     }

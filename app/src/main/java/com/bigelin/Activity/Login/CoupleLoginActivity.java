@@ -8,6 +8,7 @@ import androidx.loader.content.Loader;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -25,10 +26,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bigelin.Activity.Couple.CoupleMainActivity;
 import com.bigelin.R;
+import com.bigelin.Util.MyApplication;
 import com.example.flatdialoglibrary.dialog.FlatDialog;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -49,6 +52,7 @@ public class CoupleLoginActivity extends AppCompatActivity implements LoaderMana
     private  boolean deger = false;
     private String email,password;
 
+    private ImageView back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);// hide status bar
@@ -62,6 +66,13 @@ public class CoupleLoginActivity extends AppCompatActivity implements LoaderMana
         }catch (NullPointerException e){}
         setContentView(R.layout.activity_couple_login);
 
+        back_btn = (ImageView) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         mEmailView = findViewById(R.id.email);
         populateAutoComplete();
@@ -88,7 +99,18 @@ public class CoupleLoginActivity extends AppCompatActivity implements LoaderMana
             }
         });
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onBackPressed();
+        finish();
+        return true;
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -244,9 +266,10 @@ public class CoupleLoginActivity extends AppCompatActivity implements LoaderMana
                     @Override
                     public void onClick(View view) {
                         //flatDialog.dismiss();
-                        Intent intent = new Intent(CoupleLoginActivity.this, CoupleMainActivity.class);
-                        CoupleLoginActivity.this.startActivity(intent);
-                        finish();
+                        Intent i = new Intent(CoupleLoginActivity.this, CoupleMainActivity.class);
+                        String strName = null;
+                        i.putExtra("loginResponse", "loginResponse");
+                        startActivity(i);
                     }
                 })
                 .show();

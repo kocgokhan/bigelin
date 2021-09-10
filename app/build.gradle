@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId "com.bigelin"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -71,6 +71,12 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
     implementation 'com.github.mejdi14:Flat-Dialog-Android:1.0.5'
 
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+    
     implementation("com.squareup.okhttp3:okhttp")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
     implementation("com.squareup.okhttp3:logging-interceptor")

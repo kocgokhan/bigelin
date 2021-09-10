@@ -16,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bigelin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.Couple.Activties.CoupleCategorySearchActivity"></activity>
+        <activity android:name=".Activity.Couple.Activties.CompanyDetailActivity"></activity>
+        <activity android:name=".Activity.Couple.Activties.CompaniesFilterActivity" />
+        <activity android:name=".Activity.Couple.Activties.CategoriesCompanyActivity" />
+        <activity android:name=".Activity.Couple.Activties.CoupleCategorySearchActivity" />
         <activity android:name=".Activity.Couple.CoupleMainActivity" />
         <activity android:name=".Activity.Login.GuestLoginActivity" />
         <activity android:name=".Activity.Login.CoupleLoginActivity" />
@@ -28,6 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

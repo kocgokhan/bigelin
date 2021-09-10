@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.bigelin.Activity.Couple.Activties.CoupleCategorySearchActivity;
 import com.bigelin.Activity.Couple.CoupleMainActivity;
 import com.bigelin.Adapter.CategoriesAdapter;
+import com.bigelin.Adapter.CoupleCampaingRecyclerAdapter;
 import com.bigelin.Adapter.CoupleCategoryRecyclerAdapter;
 import com.bigelin.Pojo.Categories;
 import com.bigelin.R;
@@ -44,6 +46,7 @@ import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
 import static com.bigelin.Util.StaticFields.BASE_URL;
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class MainFragment extends Fragment {
 
@@ -56,15 +59,7 @@ public class MainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ImageView search_btn;
-
-    ArrayList<String> categoryItems = new ArrayList<>();
-    ArrayList<String> cityItems = new ArrayList<>();
-    SpinnerDialog spinnerDialogCategory;
-    SpinnerDialog spinnerDialogCity;
     private String TAG = "CoupleMainAct";
-    private TextView selectedItems,cityText;
-    private int category_id,city_id;
 
 
     private RecyclerView category_recyc,vitrin_recyc;
@@ -98,11 +93,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        requestCategorySearchItem();
         requestCategory();
-        selectedItems = (TextView) view.findViewById(R.id.categoryText);
-        cityText  = (TextView) view.findViewById(R.id.cityText);
-
 
         category_recyc = (RecyclerView) view.findViewById(R.id.category_recyc);
         vitrin_recyc = (RecyclerView) view.findViewById(R.id.vitrin_recyc);
@@ -114,61 +105,8 @@ public class MainFragment extends Fragment {
         CoupleCategoryRecyclerAdapter customAdapter2 = new CoupleCategoryRecyclerAdapter(getContext(),personImages);
         vitrin_recyc.setAdapter(customAdapter2); // set the Adapter to RecyclerView
 
-        spinnerDialogCategory = new SpinnerDialog(getActivity(), categoryItems,
-                "Aradığınız Kategoriyi Seçin");
-        spinnerDialogCity = new SpinnerDialog(getActivity(), cityItems,
-                "Bulunduğunuz Şehri Seçin");
 
-        spinnerDialogCategory.setCancellable(true);
-        spinnerDialogCategory.setShowKeyboard(false);
-        spinnerDialogCity.setCancellable(true);
-        spinnerDialogCity.setShowKeyboard(false);
 
-        spinnerDialogCategory.bindOnSpinerListener(new OnSpinerItemClick() {
-            @Override
-            public void onClick(String item, int position) {
-                selectedItems.setText(item);
-            }
-        });
-        spinnerDialogCity.bindOnSpinerListener(new OnSpinerItemClick() {
-            @Override
-            public void onClick(String item, int position) {
-                cityText.setText(item);
-            }
-        });
-
-        view.findViewById(R.id.category_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                spinnerDialogCategory.showSpinerDialog();
-            }
-        });
-        view.findViewById(R.id.city_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                spinnerDialogCity.showSpinerDialog();
-            }
-        });
-
-        search_btn = (ImageView) view.findViewById(R.id.search_btn);
-        search_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CoupleCategorySearchActivity.class);
-                Bundle extras = new Bundle();
-                if(selectedItems!=null && cityText!=null){
-
-                    intent.putExtra("category_id",selectedItems.getText().toString());
-                    intent.putExtra("category_title",selectedItems.getText().toString());
-                    intent.putExtra("city_id",cityText.getText().toString());
-                    intent.putExtra("city_title",cityText.getText().toString());
-
-                    intent.putExtras(extras);
-                    startActivity(intent);
-                    //finish();
-                }
-            }
-        });
         return view;
     }
     private void requestCategory(){
@@ -227,68 +165,17 @@ public class MainFragment extends Fragment {
             e.printStackTrace();
         }
     }
-    private void requestCategorySearchItem() {
-        JSONObject params = new JSONObject();
-        try {
-            params.put("aqGokhan", 1);
-            Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.wtf(TAG, "onResponse : " + response);
-                    JSONArray jsonArray = null;
-                    try {
-                        jsonArray = response.getJSONArray("data");
-                        JSONObject jsonObject;
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            categoryItems.add(jsonArray.getJSONObject(i).getString("title"));
-                        }
-                        MyApplication.get().getRequestQueue().getCache().clear();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-            Response.ErrorListener errorListener = new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.wtf(TAG, "onErrorResponse : " + error);
-                    NetworkResponse networkResponse = error.networkResponse;
-                    if (networkResponse != null) {
-                        Log.e("Volley", "Error. HTTP Status Code:"+networkResponse.statusCode);
-                    }
-                    if (error instanceof TimeoutError) {
-                        Log.e("Volley", "TimeoutError");
-                    }else if(error instanceof NoConnectionError){
-                        Log.e("Volley", "NoConnectionError");
-                    } else if (error instanceof AuthFailureError) {
-                        Log.e("Volley", "AuthFailureError");
-                    } else if (error instanceof ServerError) {
-                        Log.e("Volley", "ServerError");
-                    } else if (error instanceof NetworkError) {
-                        Log.e("Volley", "NetworkError");
-                    } else if (error instanceof ParseError) {
-                        Log.e("Volley", "ParseError");
-                    }
-                    Log.d("Maps:", " Error: " + error.getMessage());
-                }
-            };
-            AqJSONObjectRequest aqJSONObjectRequest = new AqJSONObjectRequest(TAG, BASE_URL + "get_category_bigelin", params, listener, errorListener);
-            MyApplication.get().getRequestQueue().add(aqJSONObjectRequest);
-        } catch (JSONException e) {
-            Log.wtf(TAG, "request params catch e.getMessage() : " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+
 
     public void drawCart(ArrayList<Categories> list){
+        if (getActivity()!=null) {
+            GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+            category_recyc.setLayoutManager(layoutManager);
+            //  call the constructor of CustomAdapter to send the reference and data to Adapter
+            CategoriesAdapter categoriesAdapter = new CategoriesAdapter(getContext(), Categories.getData(list));
+            category_recyc.setAdapter(categoriesAdapter); // set the Adapter to RecyclerView
 
-        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),2);
-        category_recyc.setLayoutManager(layoutManager);
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(getActivity(),Categories.getData(list));
-        category_recyc.setAdapter(categoriesAdapter); // set the Adapter to RecyclerView
-
-        Log.wtf("categories", String.valueOf(list));
-
+            Log.wtf("categories", String.valueOf(list));
+        }
     }
 }

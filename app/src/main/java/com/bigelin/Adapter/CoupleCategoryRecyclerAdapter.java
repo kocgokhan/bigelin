@@ -60,7 +60,7 @@ public class CoupleCategoryRecyclerAdapter extends RecyclerView.Adapter<CoupleCa
             super(itemView);
 
             // get the reference of item view's
-            image = (ImageView) itemView.findViewById(R.id.product_image);
+            image = (ImageView) itemView.findViewById(R.id.company_image);
 
         }
     }

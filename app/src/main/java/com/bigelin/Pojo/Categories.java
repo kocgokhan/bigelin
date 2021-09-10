@@ -9,19 +9,18 @@ import java.util.ArrayList;
 
 public class Categories {
     private static final String TAG = "CategoriesPojo ";
-
     private int category_id;
-    private String category_title, category_image;
+    private String category_title, img;
 
     public Categories(JSONObject response, boolean isLogin) {
         try {
-            this.category_id = response.getInt("category_id");
+            this.category_id    = response.getInt("category_id");
             this.category_title = response.getString("category_title");
-            this.category_image = response.getString("category_image");
+            this.img            = response.getString("img");
             if (isLogin) {
-                this.category_id = response.getInt("category_id");
+                this.category_id    = response.getInt("category_id");
                 this.category_title = response.getString("category_title");
-                this.category_image = response.getString("category_image");
+                this.img            = response.getString("img");
             }
         } catch (JSONException e) {
             Log.wtf(TAG, "json parse catche dustu : " + e.getMessage());
@@ -52,12 +51,12 @@ public class Categories {
         this.category_title = category_title;
     }
 
-    public String getCategory_image() {
-        return category_image;
+    public String getImg() {
+        return img;
     }
 
-    public void setCategory_image(String category_image) {
-        this.category_image = category_image;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public static ArrayList<Categories> getData(ArrayList<Categories> ary) {
@@ -66,7 +65,7 @@ public class Categories {
             Categories temp = new Categories();
             temp.setCategory_id(ary.get(i).category_id);
             temp.setCategory_title(ary.get(i).category_title);
-            temp.setCategory_image(ary.get(i).category_image);
+            temp.setImg(ary.get(i).img);
             productList.add(temp);
         }
         return productList;
